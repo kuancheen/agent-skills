@@ -14,6 +14,7 @@ Allows an agent to pick up work immediately without loss of progress after a ses
 Immediately read the project's living memory:
 1. `implementation_plan.md` — locate the currently active / in-progress checklist items.
 2. `walkthrough.md` — review the system architecture and already-verified features.
+3. `deployment_checklist.md` (if present) — review if the interrupted work involved deployment, server sync, or credentials.
 
 ### Step 2: Inspect Disk & Git State
 Do not rely on chat history. Run diagnostics on the file system:
@@ -26,6 +27,7 @@ Compare `implementation_plan.md` with the git status and source files:
 - Did the previous session stop mid-edit?
 - Did a build/test fail right before interruption?
 - Is there a half-completed checklist item?
+- **Deployment Interruption**: Was the agent in the middle of an SCP, rsync, container restart, or remote build? Check remote status against `deployment_checklist.md`.
 
 ### Step 4: Formulate and Execute Recovery
 1. Present a concise status to the user:
