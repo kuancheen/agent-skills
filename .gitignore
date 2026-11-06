@@ -1,0 +1,12 @@
+# Ignore everything inside skills by default
+.gemini/config/skills/*
+
+# Allow only 0- skills
+!.gemini/config/skills/0-*/
+!.gemini/config/skills/0-*/**
+
+# OS & Editor artifacts
+.DS_Store
+Thumbs.db
+*.swp
+*~
