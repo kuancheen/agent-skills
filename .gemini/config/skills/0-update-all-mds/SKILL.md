@@ -17,8 +17,22 @@ Performs an atomic state handover at the conclusion of a work block. Ensures all
 ### Step 1: Missing Artifact Auto-Bootstrap (Fallback Check)
 Before updating, verify that the core living memory files exist in the project root:
 1. **`README.md`**:
-   - If missing: Create it with the project title, overview, quickstart, and the **AI Agent State Management Table**.
-   - If present: Inspect content. If the **AI Agent State Management Table** is missing, insert it cleanly below the header.
+   - If missing: Create it with the project title, overview, quickstart, and the standard **AI Agent State Management Table**:
+     ```markdown
+     ## 🧠 AI Agent State Management
+
+     This repository uses an AI-first living memory workflow. Every agent session bootstraps from these documents — no context is stored in chat history.
+
+     | File | Role |
+     |---|---|
+     | [`new_conversation.md`](./new_conversation.md) | Agent *operating rules* — what to DO automatically every task block |
+     | [`walkthrough.md`](./walkthrough.md) | Architecture memory — how the system works, active files, completed features |
+     | [`implementation_plan.md`](./implementation_plan.md) | What's next / what's done — strict checklist of pending and completed tasks |
+     | [`deployment_checklist.md`](./deployment_checklist.md) | *(If present)* Full reference — new machine setup, secrets, and deployment protocol |
+
+     > **For AI Agents:** Read these documents at the start of every session. Do not ask the user for context already documented there.
+     ```
+   - If present: Inspect content. If the **AI Agent State Management Table** is missing, insert the snippet above cleanly below the introduction header.
 2. **`new_conversation.md`**:
    - If missing: Create it from the standard operating rules template.
 3. **`implementation_plan.md`**:
