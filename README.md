@@ -10,11 +10,26 @@ These skills are prefixed with `0-` so they automatically sort to the top when i
 
 | Skill | Slash Command | Description |
 | :--- | :--- | :--- |
-| **`0-create-token-saving-mds`** | `/0-create-token-saving-mds` | Scans conversation/codebase and initializes the token-saving memory strategy: creates `new_conversation.md`, `implementation_plan.md`, and `walkthrough.md`. |
-| **`0-start-new-conversation`** | `/0-start-new-conversation` | Bootstraps a fresh conversation session using `new_conversation.md`, `implementation_plan.md`, and `walkthrough.md` to restore context instantly. |
-| **`0-update-all-mds`** | `/0-update-all-mds` | Performs atomic state handover: updates `implementation_plan.md`, `walkthrough.md`, `README.md`, and `new_conversation.md` (done, learned, next) and commits to Git. |
+| **`0-create-token-saving-mds`** | `/0-create-token-saving-mds` | Scans conversation/codebase and initializes the token-saving memory strategy: creates `README.md`, `new_conversation.md`, `implementation_plan.md`, `walkthrough.md`, and optionally `deployment_checklist.md`. |
+| **`0-start-new-conversation`** | `/0-start-new-conversation` | Bootstraps a fresh conversation session using `README.md`, `new_conversation.md`, `implementation_plan.md`, and `walkthrough.md` to restore context instantly. |
+| **`0-update-all-mds`** | `/0-update-all-mds` | Performs atomic state handover: syncs living memory artifacts (with auto-bootstrap fallback) and commits to Git. |
 | **`0-make-subrepo`** | `/0-make-subrepo` | Integrates a repository or project as a formal private Git submodule under a main repository with parameter validation and explicit confirmation gates. |
-| **`0-resume-session`** | `/0-resume-session` | Inspects incomplete files, git diff, and task checklists to immediately resume work interrupted by token or context limits. |
+| **`0-resume-session`** | `/0-resume-session` | Inspects incomplete files, git diff, task checklists, and deployment state to immediately resume work interrupted by token or context limits. |
+
+---
+
+## 🧠 AI Agent State Management
+
+This repository uses an AI-first living memory workflow. Every agent session bootstraps from these documents — no context is stored in chat history.
+
+| File | Role |
+|---|---|
+| [`new_conversation.md`](./new_conversation.md) | Agent *operating rules* — what to DO automatically every task block |
+| [`walkthrough.md`](./walkthrough.md) | Architecture memory — how the system works, active files, completed features |
+| [`implementation_plan.md`](./implementation_plan.md) | What's next / what's done — strict checklist of pending and completed tasks |
+| [`deployment_checklist.md`](./deployment_checklist.md) | *(If present)* Full reference — new machine setup, secrets, and deployment protocol |
+
+> **For AI Agents:** Read these documents at the start of every session. Do not ask the user for context already documented there.
 
 ---
 
