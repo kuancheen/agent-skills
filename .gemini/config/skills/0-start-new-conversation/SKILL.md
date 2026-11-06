@@ -1,6 +1,6 @@
 ---
 name: 0-start-new-conversation
-description: Bootstraps a fresh conversation session using new_conversation.md, implementation_plan.md, and walkthrough.md (and deployment_checklist.md if present). Trigger when starting a new conversation or when the user runs /0-start-new-conversation.
+description: Bootstraps a fresh conversation session using README.md, new_conversation.md, implementation_plan.md, and walkthrough.md (and deployment_checklist.md if present). Trigger when starting a new conversation or when the user runs /0-start-new-conversation.
 ---
 
 # Start New Conversation
@@ -15,6 +15,7 @@ At the start of the session, immediately read:
 1. `new_conversation.md` (root directory) — load operational rules and guidelines.
 2. `implementation_plan.md` (root directory) — inspect pending checklist items and immediate next tasks.
 3. `walkthrough.md` (root directory) — inspect current architecture, active files, verified components, and host setup.
+4. `README.md` (root directory) — understand project overview, entry points, and high-level scope.
 
 ### Step 2: Deployment Readiness Check (If Applicable)
 - Check whether `deployment_checklist.md` exists in the root directory.
