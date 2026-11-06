@@ -30,7 +30,7 @@ Present the complete plan to the user in chat:
 - Remote URL
 - Target commit / tracking branch
 - Planned documentation files (`<destination_path>/README.md`)
-- Living memory updates (`implementation_plan.md`, `walkthrough.md`)
+- Living memory updates (`implementation_plan.md`, `walkthrough.md`, and `deployment_checklist.md` if subrepo affects deployment)
 
 **STOP and wait for user approval.** Do not execute Step 3 until the user confirms.
 
@@ -54,6 +54,7 @@ Inside the submodule root directory (e.g., `<destination_path>/README.md`), crea
 ### Step 5: Update Living Memory Artifacts
 - **`implementation_plan.md`**: Check off the submodule integration milestone.
 - **`walkthrough.md`**: Document the submodule architecture, folder structure, repository URL, and clone instructions.
+- **`deployment_checklist.md` (if present)**: If the submodule alters deployment paths (e.g. nested assets, build artifacts), document them in the deployment checklist.
 - **`new_conversation.md`**: Add any submodule maintenance rules if agents need to operate inside the submodule.
 
 ### Step 6: Commit Submodule Registration
