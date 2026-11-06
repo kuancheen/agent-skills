@@ -59,6 +59,8 @@ agent-skills/
 1. **`0-` Prefix Sorting**: Verified that Antigravity matches regex `^[a-z0-9]+(-[a-z0-9]+)*$`. The `0-` prefix complies with the spec and ensures custom skills cluster at the top of the autocomplete list when typing `/0`.
 2. **Strict Approval Gate on `0-make-subrepo`**: The skill requires explicit confirmation of subrepo parameters (URL, name, target path) before any `git submodule add` command is executed.
 3. **Clean Security Scan**: Verified that none of the skills contain absolute local file paths, private keys, tokens, or proprietary URLs.
+4. **`deployment_checklist.md` Integration**: Extended skills to recognize deployment requirements, assess multi-machine paths, untracked `.env` files, and handle deployment interruptions.
+5. **Mandatory `README.md` & Auto-Bootstrap**: `0-create-token-saving-mds` and `0-update-all-mds` enforce default creation of `README.md` containing the embedded AI Agent State Management Table and automatically bootstrap any missing living memory files.
 
 ---
 
