@@ -44,8 +44,14 @@ Before updating, verify that the core living memory files exist in the project r
 
 *(If multiple core artifacts were missing, this auto-bootstraps the project into the living memory workflow as per `0-create-token-saving-mds` without requiring a separate command).*
 
-### Step 2: Inspect Working Changes
-- Run `git status` and `git diff` to review all modified, created, or deleted files in the current work session.
+### Step 2: Inspect Git History and Working Changes
+- **Check Recent Commits First:**
+  Run `git log -n 5 --oneline` to see what was recently committed (by you, another conversation, or another contributor).
+  - If recent commits modified `implementation_plan.md` or `walkthrough.md`, **respect and preserve their changes**. Do not blindly revert or overwrite milestones completed by earlier sessions.
+- **Inspect Uncommitted Changes:**
+  Run `git status` and `git diff` to review all modified, created, or deleted files in the current work session.
+- **Clean Sync (If working in a Git repo with upstream):**
+  Check `git status` to see if the branch is behind `origin`. If behind, safely pull or reconcile before editing to prevent merge conflicts.
 
 ### Step 3: Update `implementation_plan.md`
 - Mark finished items as completed (`- [x]`) or remove them if designated as a pure pending list.
