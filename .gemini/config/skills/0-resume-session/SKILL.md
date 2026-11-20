@@ -16,6 +16,7 @@ Inspect the workspace root for living memory artifacts. **Do not fail if any are
 - `walkthrough.md`: Read if present to review system architecture and completed features.
 - `README.md`: Read if present to understand overall project context.
 - `deployment_checklist.md`: Read if present to review deployment steps or credentials.
+- `USER.md` / `ADMIN.md`: Read if present when resuming work on user guides or admin operations.
 - `new_conversation.md`: Read if present for operational rules.
 
 *Note which files exist and which are still pending creation.*

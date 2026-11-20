@@ -31,7 +31,7 @@ Present the complete plan to the user in chat:
 - Submodule name and target path (`<destination_path>`)
 - Remote URL (highlighting **Private** visibility)
 - Target commit / tracking branch
-- Living memory bootstrapping plan for the child subrepo (`README.md`, `new_conversation.md`, `implementation_plan.md`, `walkthrough.md`, and `deployment_checklist.md` if applicable)
+- Living memory bootstrapping plan for the child subrepo (`README.md`, `new_conversation.md`, `implementation_plan.md`, `walkthrough.md`, and `deployment_checklist.md`, `USER.md`, `ADMIN.md` if applicable)
 - Parent decoupling plan (condensing parent MDs into pointer references)
 
 **STOP and wait for user approval.** Do not execute Step 3 until the user confirms.
@@ -63,6 +63,8 @@ Inside the child submodule root directory (`<destination_path>/`), bootstrap com
      | [`walkthrough.md`](./walkthrough.md) | Architecture memory — how the system works, active files, completed features |
      | [`implementation_plan.md`](./implementation_plan.md) | What's next / what's done — strict checklist of pending and completed tasks |
      | [`deployment_checklist.md`](./deployment_checklist.md) | *(If present)* Full reference — new machine setup, secrets, and deployment protocol |
+     | [`USER.md`](./USER.md) | *(If present)* User-friendly non-technical guide for end-users / team members |
+     | [`ADMIN.md`](./ADMIN.md) | *(If present)* Elevated operations guide for administrators & managers |
 
      > **For AI Agents:** Read these documents at the start of every session. Do not ask the user for context already documented there.
      ```
@@ -72,6 +74,10 @@ Inside the child submodule root directory (`<destination_path>/`), bootstrap com
 3. **`implementation_plan.md`**: Create initial checklist of completed features and active tasks.
 4. **`walkthrough.md`**: Document architecture, directory tree, entry points, and verified features.
 5. **`deployment_checklist.md`** *(if applicable)*: If the subrepo involves standalone hosting, servers, containers, or secrets (`.env`), document deployment instructions.
+6. **`USER.md` & `ADMIN.md`** *(if applicable)*:
+   - If the subrepo has non-technical end-users or ministry workflows, create `USER.md`.
+   - If the subrepo has admin permissions, roles, or quota management, create `ADMIN.md`.
+   - *(Skip if not applicable to the subrepo).*
 
 ### Step 5: Decouple & Slim Parent Living Memory
 In the parent repository (and grandparent/ancestors if applicable):

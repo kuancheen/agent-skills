@@ -1,6 +1,6 @@
 ---
 name: 0-start-new-conversation
-description: Bootstraps a fresh conversation session using README.md, new_conversation.md, implementation_plan.md, and walkthrough.md (and deployment_checklist.md if present). Trigger when starting a new conversation or when the user runs /0-start-new-conversation.
+description: Bootstraps a fresh conversation session using README.md, new_conversation.md, implementation_plan.md, and walkthrough.md (and deployment_checklist.md, USER.md, ADMIN.md if present). Trigger when starting a new conversation or when the user runs /0-start-new-conversation.
 ---
 
 # Start New Conversation
@@ -17,9 +17,11 @@ At the start of the session, immediately read:
 3. `walkthrough.md` (root directory) — inspect current architecture, active files, verified components, and host setup.
 4. `README.md` (root directory) — understand project overview, entry points, and high-level scope.
 
-### Step 2: Deployment Readiness Check (If Applicable)
-- Check whether `deployment_checklist.md` exists in the root directory.
+### Step 2: Deployment & Specialized Guide Check (If Applicable)
+- Check whether `deployment_checklist.md`, `USER.md`, or `ADMIN.md` exist in the root directory.
 - If the current task involves **deploying**, **multi-machine setup**, or **environment configuration / secrets**, read `deployment_checklist.md`.
+- If the current task involves **end-user / manager workflows** or user documentation, read `USER.md` (if present).
+- If the current task involves **admin privileges, roles, or quota configuration**, read `ADMIN.md` (if present).
 - If `deployment_checklist.md` is absent but the user is requesting deployment or hosting actions, note the absence and propose creating one based on verified deployment steps.
 
 ### Step 3: Assess Current State

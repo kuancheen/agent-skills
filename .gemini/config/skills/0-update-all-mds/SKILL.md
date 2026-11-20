@@ -1,6 +1,6 @@
 ---
 name: 0-update-all-mds
-description: Synchronizes implementation_plan.md, walkthrough.md, README.md, new_conversation.md, and deployment_checklist.md (if present) with completed work, lessons learned, and next plans, bootstrapping any missing artifacts if absent, then commits to Git. Trigger when user asks to update all mds, sync artifacts, or runs /0-update-all-mds.
+description: Synchronizes implementation_plan.md, walkthrough.md, README.md, new_conversation.md, deployment_checklist.md, USER.md, and ADMIN.md (if present) with completed work, lessons learned, and next plans, bootstrapping any missing core artifacts if absent, then commits to Git. Trigger when user asks to update all mds, sync artifacts, or runs /0-update-all-mds.
 ---
 
 # Update All Markdown Artifacts and Commit
@@ -11,6 +11,9 @@ Performs an atomic state handover at the conclusion of a work block. Ensures all
 ## Strict File Editing Rules
 - **View every file before editing.**
 - **Never overwrite files wholesale.** Use targeted edits (`edit_file` / `replace_file_content`) to preserve all existing architectural notes, benchmark tables, and history.
+- **Conditional Artifacts Policy (`USER.md`, `ADMIN.md`, `deployment_checklist.md`)**:
+  - If they already exist in the root directory, inspect and update them if relevant.
+  - If they do **NOT** exist, do **NOT** auto-create them during regular updates (they are created intentionally during `/0-create-token-saving-mds` or `/0-make-subrepo`).
 
 ## Procedure
 
@@ -29,6 +32,8 @@ Before updating, verify that the core living memory files exist in the project r
      | [`walkthrough.md`](./walkthrough.md) | Architecture memory — how the system works, active files, completed features |
      | [`implementation_plan.md`](./implementation_plan.md) | What's next / what's done — strict checklist of pending and completed tasks |
      | [`deployment_checklist.md`](./deployment_checklist.md) | *(If present)* Full reference — new machine setup, secrets, and deployment protocol |
+     | [`USER.md`](./USER.md) | *(If present)* User-friendly non-technical guide for end-users / team members |
+     | [`ADMIN.md`](./ADMIN.md) | *(If present)* Elevated operations guide for administrators & managers |
 
      > **For AI Agents:** Read these documents at the start of every session. Do not ask the user for context already documented there.
      ```
@@ -62,24 +67,32 @@ Before updating, verify that the core living memory files exist in the project r
 - Update directory structure and architecture diagrams if files were added or modified.
 - Append new discoveries, troubleshooting steps, and lessons learned under "Things Learned".
 
-### Step 5: Update `deployment_checklist.md` (If Applicable)
+### Step 5: Update `deployment_checklist.md` (If Present)
 - If `deployment_checklist.md` exists:
   - Update any modified deployment steps, new destination paths, altered environment variables, or new verification curl/log commands.
 
-### Step 6: Update `README.md`
+### Step 6: Update `USER.md` and `ADMIN.md` (If Present)
+- **`USER.md`**:
+  - If `USER.md` exists: Update it if end-user workflows, self-serve options, non-technical steps, or UI buttons/screens were added or changed.
+  - If `USER.md` does NOT exist: Do not create it.
+- **`ADMIN.md`**:
+  - If `ADMIN.md` exists: Update it if administrator roles, permissions, quota rules, audit actions, or management controls changed.
+  - If `ADMIN.md` does NOT exist: Do not create it.
+
+### Step 7: Update `README.md`
 - If user-facing interfaces, installation steps, API contracts, or core dependencies changed, update `README.md`.
 - Ensure the **AI Agent State Management Table** remains present and accurately links to all existing root markdown files.
 
-### Step 7: Update `new_conversation.md` (If Needed)
+### Step 8: Update `new_conversation.md` (If Needed)
 - If any operational rule, agent workflow, tool guideline, or project-specific constraint was modified or learned, update `new_conversation.md`.
 
-### Step 8: Git Stage and Commit
+### Step 9: Git Stage and Commit
 1. Check `git status` to ensure all relevant files (code, tests, artifacts) are identified.
 2. Stage the modified files and documentation:
    ```bash
    git add README.md implementation_plan.md walkthrough.md new_conversation.md <modified_source_files>
-   # If deployment_checklist.md exists or was created:
-   git add deployment_checklist.md
+   # If deployment_checklist.md, USER.md, or ADMIN.md exist and were modified:
+   git add deployment_checklist.md USER.md ADMIN.md 2>/dev/null || true
    ```
 3. Commit using a conventional commit message:
    ```bash
